@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Nexia experimental remote developer manifest v1",
+  "$comment": "Use validateManifest as well: screen identifiers and routes must be unique across screens.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "app",
+    "screens"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1"
+    },
+    "app": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "version"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*(?:\\.[a-z][a-z0-9]*(?:-[a-z0-9]+)*)+(?![\\s\\S])"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?(?![\\s\\S])"
+        }
+      }
+    },
+    "screens": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "route",
+          "entry"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*(?![\\s\\S])"
+          },
+          "route": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^/(?:[a-zA-Z0-9_-]+(?:/[a-zA-Z0-9_-]+)*)?(?![\\s\\S])"
+          },
+          "entry": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?:[a-zA-Z0-9_-]+/)*[a-zA-Z0-9_-]+(?:\\.[a-zA-Z0-9_-]+)+(?![\\s\\S])"
+          }
+        }
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required"
+      ],
+      "properties": {
+        "required": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^\\S+(?![\\s\\S])"
+          }
+        }
+      }
+    }
+  }
+}
