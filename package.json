@@ -1,0 +1,38 @@
+{
+  "name": "@amuzcorp/nexia-dev-protocol",
+  "version": "0.1.0-alpha.1",
+  "description": "Experimental remote developer manifest and discovery contracts for Nexia",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
+    },
+    "./manifest.schema.json": "./schema/manifest.schema.json"
+  },
+  "files": [
+    "src",
+    "schema",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nexia-cloud-os/dev-protocol.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "alpha",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "homepage": "https://github.com/nexia-cloud-os/dev-protocol#readme",
+  "bugs": {
+    "url": "https://github.com/nexia-cloud-os/dev-protocol/issues"
+  }
+}
