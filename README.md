@@ -5,7 +5,7 @@
 이 규약은 기존 PHP App의 Composer 패키지 Manifest를 대체하지 않습니다. 원격 UI 실행, Resource API, Functions, Sandbox, 배포 권한을 구현하거나 부여하지 않습니다. `permissions.required`는 요구사항의 선언일 뿐이며 실제 승인과 권한 검사는 Core의 책임입니다.
 
 ```js
-import { validateManifest, PROTOCOL_VERSION, DISCOVERY_PATH } from '@amuzcorp/nexia-dev-protocol';
+import { validateManifest, PROTOCOL_VERSION, DISCOVERY_PATH } from '@nexia/dev-protocol';
 
 const result = validateManifest({
   schema_version: '1',
@@ -18,7 +18,7 @@ const result = validateManifest({
 
 `validateManifest(unknown)`은 입력을 변경하지 않고 `{ valid, errors: [{ path, message }] }`를 반환합니다. 잘못된 선언은 경로별 오류로 보고합니다. 알 수 없는 필드와 Functions 같은 미지원 기능은 거절합니다. 앱 ID는 소문자 역도메인 형식, 버전은 SemVer, 화면 ID는 소문자 하이픈 형식입니다. 화면은 최소 하나여야 하며 ID와 route는 각각 고유해야 합니다. 경로는 `/` 또는 `/notes/list` 같은 정적 경로이며 쿼리·해시·동적 파라미터·끝 슬래시는 지원하지 않습니다. entry는 `src/notes.tsx` 같은 상대 파일 경로이며 상위 이동·절대 경로·역슬래시는 거절합니다. 실제 파일 존재와 symlink 경계는 파일을 읽는 도구가 별도로 확인해야 합니다.
 
-에디터용 JSON Schema는 `@amuzcorp/nexia-dev-protocol/manifest.schema.json`에서 제공합니다. JSON Schema 단독으로는 화면별 ID·route 중복을 검사할 수 없으므로 최종 선언 검사는 `validateManifest`를 사용합니다. JSON/YAML 문서 파싱은 이 패키지의 범위 밖입니다.
+에디터용 JSON Schema는 `@nexia/dev-protocol/manifest.schema.json`에서 제공합니다. JSON Schema 단독으로는 화면별 ID·route 중복을 검사할 수 없으므로 최종 선언 검사는 `validateManifest`를 사용합니다. JSON/YAML 문서 파싱은 이 패키지의 범위 밖입니다.
 
 ## Discovery 계약
 
