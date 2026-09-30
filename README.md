@@ -44,3 +44,13 @@ Core의 `/.well-known/nexia-developer-platform` 공개 응답은 다음 형태�
 ## 로컬 연결과 검증
 
 `npm test`로 선언 검사를 확인하고 `npm pack`으로 로컬 tarball을 만들 수 있습니다. 다른 저장소에서는 이 tarball을 `npm install --workspaces=false --no-save --package-lock=false /absolute/path/to/tarball.tgz`로 연결합니다. 의존 선언은 정상 버전 문자열을 유지합니다. 메타데이터의 `UNLICENSED`는 별도 오픈소스 사용권을 부여하지 않음을 뜻합니다. 공개 registry 게시와 사용권 부여는 별개입니다.
+
+## GitHub tag submission contracts
+
+`TagSubmissionRequest` accepts only `app_id`, the exact remote `tag`, and an
+idempotency `request_id`. Core determines the version, commit and source.
+`repository_submissions` is an optional discovery capability for older servers.
+`RepositoryResponse` and `SubmissionResponse` describe repository connection,
+submission status and permitted retries. No GitHub credential or local source
+bytes belong in these requests. Deploy the corresponding Core and adopt this
+protocol change before releasing a client that imports these new types.
