@@ -1,6 +1,6 @@
 {
   "name": "@nexia/dev-protocol",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "description": "Experimental remote developer manifest and discovery contracts for Nexia",
   "type": "module",
   "engines": {
