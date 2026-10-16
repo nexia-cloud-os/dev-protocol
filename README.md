@@ -2,7 +2,7 @@
 
 외부 개발 도구가 공유하는 실험적 원격 UI 선언 규약입니다. Node.js 22 이상에서 빌드 없이 ESM으로 사용합니다. 현재 버전은 실험적 alpha이며 npm의 `alpha` 태그로 배포합니다.
 
-이 규약은 기존 PHP App의 Composer 패키지 Manifest를 대체하지 않습니다. 원격 UI 실행, Resource API, Functions, Sandbox, 배포 권한을 구현하거나 부여하지 않습니다. `permissions.required`는 요구사항의 선언일 뿐이며 실제 승인과 권한 검사는 Core의 책임입니다.
+이 규약은 PHP App의 `nexia.json` 선언과 PHP 매니페스트를 대체하지 않습니다. 원격 UI 실행, Resource API, Functions, Sandbox, 배포 권한을 구현하거나 부여하지 않습니다. `permissions.required`는 요구사항의 선언일 뿐이며 실제 승인과 권한 검사는 Core의 책임입니다.
 
 ```js
 import { validateManifest, PROTOCOL_VERSION, DISCOVERY_PATH } from '@nexia/dev-protocol';
